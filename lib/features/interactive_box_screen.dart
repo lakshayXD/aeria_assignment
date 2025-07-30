@@ -128,14 +128,10 @@ class InteractiveBoxScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 50),
                 if (count > 0)
-                  Scrollbar(
+                  SingleChildScrollView(
                     controller: _horizontalScrollController,
-                    thumbVisibility: true,
-                    child: SingleChildScrollView(
-                      controller: _horizontalScrollController,
-                      scrollDirection: Axis.horizontal,
-                      child: _buildCShapeBoxes(count, boxStates, ref, context),
-                    ),
+                    scrollDirection: Axis.horizontal,
+                    child: _buildCShapeBoxes(count, boxStates, ref, context),
                   ),
               ],
             ),
@@ -168,7 +164,7 @@ class InteractiveBoxScreen extends ConsumerWidget {
     int maxRowCount = max(topRowCount, bottomRowCount);
     double margin = 15;
     double availableWidth = screenWidth - (maxRowCount * 2 * margin);
-    double boxSize = (availableWidth / maxRowCount).clamp(30, 50);
+    double boxSize = (availableWidth / maxRowCount).clamp(23, 50);
 
     List<Widget> children = [];
     int idx = 0;
@@ -206,6 +202,7 @@ class InteractiveBoxScreen extends ConsumerWidget {
 
   Widget _box(int index, bool isGreen, WidgetRef ref, double size) {
     return GestureDetector(
+      behavior: HitTestBehavior.translucent,
       onTap: () => _handleBoxTap(ref, index),
       child: Container(
         margin: const EdgeInsets.all(5),
