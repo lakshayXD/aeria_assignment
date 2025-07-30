@@ -103,7 +103,7 @@ class InteractiveBoxScreen extends ConsumerWidget {
                   decoration: const InputDecoration(
                     labelText: enterWithinRangeErrText,
                     labelStyle: TextStyle(
-                      fontSize: 17,
+                      fontSize: 18,
                     ),
                   ),
                   keyboardType: TextInputType.number,
